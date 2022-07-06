@@ -83,7 +83,6 @@ namespace genie.script{
 
                     cast.AddActor("bullet2", bullet2);
                 }
-
             }
 
             else {
