@@ -71,14 +71,7 @@ namespace Tanks.script {
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
                     this.tank1.SetVy(0);
-
-
-
-                
                 }
-
-
-            
             }
 
              if (this.tank2 != null) {
@@ -113,14 +106,7 @@ namespace Tanks.script {
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.W] || keysState[Keys.S])) {
                     this.tank2.SetVy(0);
-
-
-
-                
                 }
-
-
-            
             }
         }
     }

@@ -21,9 +21,7 @@ namespace Tanks.script {
             this.screenService.FillScreen(Color.WHITE);
 
             // Actor tank1 = cast.GetFirstActor("Tank1");
-            
 
-            
 
 
             // Draw all actors as rectangles for now.

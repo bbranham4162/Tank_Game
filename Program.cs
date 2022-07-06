@@ -12,10 +12,8 @@ using Tanks.script;
 
 
 
-namespace Tanks
-{
-    public static class Program
-    {
+namespace Tanks {
+    public static class Program {
         public static void Test() {
             // MouseMap mouseMap = new MouseMap();
             // mouseMap.getRaylibMouse(-1);
@@ -31,8 +29,7 @@ namespace Tanks
             // director.DirectScene();
         }
 
-        public static void Main(string[] args)
-        {   
+        public static void Main(string[] args) {   
             // Some constants W_SIZE and, Screen_title and FPS are for our screen
             (int, int) W_SIZE = (1000, 800);
             (int, int) START_POSITION = (500, 700);
@@ -65,20 +62,17 @@ namespace Tanks
             StartGameButton startGameButton = new StartGameButton("Tanks/assets/Startbutton/110-1108877_start-button-start-button-png.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
 
             // Lets create the cast so we can add to it
-
             Cast cast = new Cast();
 
            
             // Lets add it to Our cast
-
             cast.AddActor("Tank1", tank1);
             
             cast.AddActor("Tank2", tank2);
 
             cast.AddActor("start_button", startGameButton);
 
-           // Create Script
-
+            // Create Script
             Script script = new Script();
 
             // Add Actions to my script
@@ -108,13 +102,8 @@ namespace Tanks
             script.AddAction("output", new DrawActorsAction(1, screenService));
             script.AddAction("output", new UpdateScreenAction(2, screenService));
 
-            
-
-            
-
             // // Yo, director, do your thing!
             director.DirectScene(cast, script);
-
         }
     }
 }
