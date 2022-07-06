@@ -29,6 +29,12 @@ class HandleStartGameAction : genie.script.Action {
         Actor? startGameButton = cast.GetFirstActor("start_button");
         Vector2 mousePosition = this.mouseService.GetCurrentCoordinates();
 
+        //Created Walls Actors
+
+        // Actor leftwall = new Actor();
+
+
+
         // When the startGameButton is clicked, add a bunch of actions to the script
         // as determined by the whoever calls this class.  
         if (startGameButton != null
@@ -36,6 +42,10 @@ class HandleStartGameAction : genie.script.Action {
             && this.physicsService.CheckCollisionPoint(startGameButton, (mousePosition.X, mousePosition.Y))) {
                 
                 // Remove the startGame Button
+                
+
+                // cast.AddActor("walls", leftwall );
+                
                 cast.RemoveActor("start_button", startGameButton);
                 script.RemoveAction("input", this);
                 

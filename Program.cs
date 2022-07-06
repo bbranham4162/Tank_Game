@@ -55,11 +55,11 @@ namespace Tanks
            
             //Lets construct the Tank and the Building 
             //Heres one of the players
-            Tank tank1  = new Tank(null, 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 180);
+            Tank tank1  = new Tank(null, 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 45, 0);
 
             // Here's our second Player
 
-            Tank tank2 = new Tank(null, 70, 50, W_SIZE.Item1/4, W_SIZE.Item2/10 *9, 0, 0, 180);
+            Tank tank2 = new Tank(null, 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 0, 0);
 
             //Here's the start game button
             StartGameButton startGameButton = new StartGameButton(null, 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
@@ -68,9 +68,11 @@ namespace Tanks
 
             Cast cast = new Cast();
 
+           
             // Lets add it to Our cast
 
             cast.AddActor("Tank1", tank1);
+            
             cast.AddActor("Tank2", tank2);
 
             cast.AddActor("start_button", startGameButton);
@@ -90,6 +92,7 @@ namespace Tanks
             startGameActions["output"] = new List<genie.script.Action>();
 
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
+            startGameActions["input"].Add(new ShootingAction(2, keyboardService));
             // startGameActions["update"].Add(new SpawnAsteroidsAction(1, W_SIZE, (float)1.5));
 
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions));
@@ -101,6 +104,8 @@ namespace Tanks
             // // Add all output actions
             script.AddAction("output", new DrawActorsAction(1, screenService));
             script.AddAction("output", new UpdateScreenAction(2, screenService));
+
+            
 
             
 

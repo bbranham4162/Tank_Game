@@ -12,12 +12,11 @@ Changes
 
 ???
 
-1. How can I change line 25 in Draw Actors Action to change the tank colors separately?
-2. How can I easily add movement keys for our second tank??? In HandleTankMovementAction?
+1. 
 3. Do we want our map boundaries to overlap i.e you move through one side and come out the other or for it to have hard boundaries? 
 
 TODO TO FINISH ALPHA
 
-1. Get tanks to be different colors
-2. Get tank #2 to move off of keys WASD
+1. Create Walls in StartGameActions line 34 creates it 47 adds it to actor
+2. 
 3. Create Walls for the tanks by creating Walls class in Cast and then creating new walls object in Program
