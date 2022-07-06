@@ -39,50 +39,69 @@ namespace genie.script{
             Actor? tank1 = cast.GetFirstActor("Tank1");
 
             Actor? tank2 = cast.GetFirstActor("Tank2");
-
-            
-            
-            
-
-
            
-           // 1. Create if statement for both keys being pressed and released
+            // 1. Create if statement for both keys being pressed and released
             // 2. Create bullet when you presss the key and add it to the cast
             // 3. Remove bulletg
 
             Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
 
-           if (tank2 != null) {
+            if (tank2 != null) {
                 
                 // Get the keysState from the keyboardService
-                
                 
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
                 if (keysState[Keys.SPACE]) {
 
-                    Actor bullet2 = new Actor(null, 2, 5, tank2.GetX(), tank2.GetY(), tank2.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank2.GetRotation()/180)), tank2.GetVy() +(float) (shootingVel*Math.Sin(Math.PI * tank2.GetRotation()/180)),  tank2.GetRotation(), 0);
-                    bullet2.SetVx(this.shootingVel);
+                    Actor bullet2 = new Actor(null, 2, 5, tank2.GetX(), tank2.GetY(),
+                    0, //tank2.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank2.GetRotation()/180)),
+                    0, //tank2.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank2.GetRotation()/180)),
+                    tank2.GetRotation(), 0);
+
+                    //right/left shot direction based on Vx
+                    if(tank2.GetVx() > 0) {
+                        bullet2.SetVx(this.shootingVel);
+                    }
+                    else if(tank2.GetVx() < 0) {
+                        bullet2.SetVx(-this.shootingVel);
+                    }
+
+                    //up/down shot direction based on Vy
+                    if(tank2.GetVy() > 0) {
+                        bullet2.SetVy(this.shootingVel);
+                    }
+                    else if(tank2.GetVy() < 0) {
+                        bullet2.SetVy(-this.shootingVel);
+                    }
+                    
+
+                    
                     cast.AddActor("bullet2", bullet2);
+                }
 
-                 }
+            }
 
-           }
             else {
                 Console.WriteLine("Ya dun messed up");
             }
 
             if (tank1 != null){
-                
             
-                if (keysState[Keys.RETURN]){
+                if (keysState[Keys.RETURN]) {
                     
-                    Actor bullet1 = new Actor(null, 2, 5, tank1.GetX() , tank1.GetY(), tank1.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank1.GetRotation()/180)), tank1.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank1.GetRotation()/180)),  tank1.GetRotation(), 0);
+                    Actor bullet1 = new Actor(null, 2, 5,
+                    tank1.GetX(), tank1.GetY(),
+                    0, //tank1.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank1.GetRotation()/180)),
+                    0, //tank1.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank1.GetRotation()/180)),
+                    tank1.GetRotation(), 0);
+
                     bullet1.SetVx(this.shootingVel);
                     cast.AddActor("bullet1", bullet1);
-                 }
+                }
             
             }
+
             else {
                 Console.WriteLine("Ya dun messed up");
             }
