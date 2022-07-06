@@ -48,15 +48,19 @@ namespace Tanks.script {
                 // actual movement
                 if (keysState[Keys.LEFT]) {
                     this.tank1.SetVx(-this.tankMovementVel);
+                    this.tank1.SetRotation(270);
                 }
                 if (keysState[Keys.RIGHT]) {
                     this.tank1.SetVx(this.tankMovementVel);
+                    this.tank1.SetRotation(90);
                 }
                 if (keysState[Keys.DOWN]) {
                     this.tank1.SetVy(this.tankMovementVel);
+                    this.tank1.SetRotation(180);
                 }
                 if (keysState[Keys.UP]) {
                     this.tank1.SetVy(-this.tankMovementVel);
+                    this.tank1.SetRotation(0);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
