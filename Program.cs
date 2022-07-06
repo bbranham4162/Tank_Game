@@ -55,11 +55,11 @@ namespace Tanks
            
             //Lets construct the Tank and the Building 
             //Heres one of the players
-            Tank tank1  = new Tank(null, 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 45, 0);
+            Tank tank1  = new Tank("Tanks/assets/Tanks/942355.png", 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 0, 0);
 
             // Here's our second Player
 
-            Tank tank2 = new Tank(null, 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 0, 0);
+            Tank tank2 = new Tank("Tanks/assets/Tanks/942355.png", 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 0, 0);
 
             //Here's the start game button
             StartGameButton startGameButton = new StartGameButton(null, 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
