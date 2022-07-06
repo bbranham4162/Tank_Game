@@ -62,7 +62,7 @@ namespace Tanks
             Tank tank2 = new Tank("Tanks/assets/Tanks/942355.png", 70, 50, W_SIZE.Item1/2, W_SIZE.Item2/10 *9, 0, 0, 0, 0);
 
             //Here's the start game button
-            StartGameButton startGameButton = new StartGameButton(null, 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
+            StartGameButton startGameButton = new StartGameButton("Tanks/assets/Startbutton/110-1108877_start-button-start-button-png.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
 
             // Lets create the cast so we can add to it
 
