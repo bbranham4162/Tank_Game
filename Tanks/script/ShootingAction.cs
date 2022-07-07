@@ -54,13 +54,13 @@ namespace genie.script{
                 // actual movement
                 if (keysState[Keys.SPACE]) {
 
-                    Actor bullet2 = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 2, 5, tank2.GetX(), tank2.GetY(),
+                    Actor bullet2 = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 10, 10, tank2.GetX(), tank2.GetY(),
                     0, //tank2.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank2.GetRotation()/180)),
                     0, //tank2.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank2.GetRotation()/180)),
                     tank2.GetRotation(), 0);
 
                     //right/left shot direction based on Vx
-                    if(tank2.GetVx() > 0) {
+                /*    if(tank2.GetVx() > 0) {
                         bullet2.SetVx(this.shootingVel);
                     }
                     else if(tank2.GetVx() < 0) {
@@ -79,6 +79,39 @@ namespace genie.script{
                     if(tank2.GetVx() == 0 && tank2.GetVy() == 0) {
                         bullet2.SetVx(0);
                         bullet2.SetVy(-this.shootingVel);
+                    }   */
+
+                    if(tank2.GetRotation() == 0) {
+                        bullet2.SetVx(0);
+                        bullet2.SetVy(-shootingVel);
+                    }
+                    else if(tank2.GetRotation() == 45) {
+                        bullet2.SetVx(shootingVel);
+                        bullet2.SetVy(-shootingVel);
+                    }
+                    else if(tank2.GetRotation() == 90) {
+                        bullet2.SetVx(shootingVel);
+                        bullet2.SetVy(0);
+                    }
+                    else if(tank2.GetRotation() == 135) {
+                        bullet2.SetVx(shootingVel);
+                        bullet2.SetVy(shootingVel);
+                    }
+                    else if(tank2.GetRotation() == 180) {
+                        bullet2.SetVx(0);
+                        bullet2.SetVy(shootingVel);
+                    }
+                    else if(tank2.GetRotation() == 225) {
+                        bullet2.SetVx(-shootingVel);
+                        bullet2.SetVy(shootingVel);
+                    }
+                    else if(tank2.GetRotation() == 270) {
+                        bullet2.SetVx(-shootingVel);
+                        bullet2.SetVy(0);
+                    }
+                    else {
+                        bullet2.SetVx(-shootingVel);
+                        bullet2.SetVy(-shootingVel);
                     }
 
                     cast.AddActor("bullet2", bullet2);
@@ -92,13 +125,13 @@ namespace genie.script{
             if (tank1 != null){
             
                 if (keysState[Keys.RETURN]) {
-                    Actor bullet1 = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 2, 5,
+                    Actor bullet1 = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 10, 10,
                     tank1.GetX(), tank1.GetY(),
                     0, //tank1.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank1.GetRotation()/180)),
                     0, //tank1.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank1.GetRotation()/180)),
                     tank1.GetRotation(), 0);
 
-                    //right/left shot direction based on Vx
+                /*    //right/left shot direction based on Vx
                     if(tank1.GetVx() > 0) {
                         bullet1.SetVx(this.shootingVel);
                     }
@@ -118,7 +151,42 @@ namespace genie.script{
                     if(tank1.GetVx() == 0 && tank1.GetVy() == 0) {
                         bullet1.SetVx(0);
                         bullet1.SetVy(-this.shootingVel);
+                    }*/
+
+
+                    if(tank1.GetRotation() == 0) {
+                        bullet1.SetVx(0);
+                        bullet1.SetVy(-shootingVel);
                     }
+                    else if(tank1.GetRotation() == 45) {
+                        bullet1.SetVx(shootingVel);
+                        bullet1.SetVy(-shootingVel);
+                    }
+                    else if(tank1.GetRotation() == 90) {
+                        bullet1.SetVx(shootingVel);
+                        bullet1.SetVy(0);
+                    }
+                    else if(tank1.GetRotation() == 135) {
+                        bullet1.SetVx(shootingVel);
+                        bullet1.SetVy(shootingVel);
+                    }
+                    else if(tank1.GetRotation() == 180) {
+                        bullet1.SetVx(0);
+                        bullet1.SetVy(shootingVel);
+                    }
+                    else if(tank1.GetRotation() == 225) {
+                        bullet1.SetVx(-shootingVel);
+                        bullet1.SetVy(shootingVel);
+                    }
+                    else if(tank1.GetRotation() == 270) {
+                        bullet1.SetVx(-shootingVel);
+                        bullet1.SetVy(0);
+                    }
+                    else {
+                        bullet1.SetVx(-shootingVel);
+                        bullet1.SetVy(-shootingVel);
+                    }
+
 
                     cast.AddActor("bullet1", bullet1);
                 }
