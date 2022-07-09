@@ -12,11 +12,11 @@ Changes
 
 ???
 
-1. 
-3. Do we want our map boundaries to overlap i.e you move through one side and come out the other or for it to have hard boundaries? 
+1. How can I get my tank to stop upon colliding with a wall??? I tryed setting my velocityX to zero and it would set it to that but nothing else would change because the movement is auto set back whenever we press a key.
 
-TODO TO FINISH ALPHA
+TODO TO FINISH BETA
 
-1. Create Walls in StartGameActions line 34 creates it 47 adds it to actor
-2. 
+1. Action class finished for wall collision
+2. action class for bullettank Collision
+3. 
 3. Create Walls for the tanks by creating Walls class in Cast and then creating new walls object in Program

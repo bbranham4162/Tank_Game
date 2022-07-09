@@ -65,39 +65,6 @@ namespace Tanks.script
 
                     Console.WriteLine("I hit a wall!!");
 
-                    
-                    
-
-
-            
-        
-        // Get Tank1 (T1) Tank 2 (T2) and newWall(WX) positions and compare them 
-
-        // int positionT1X = (int) tank1.GetX();
-
-        // int positionT1Y = (int) tank1.GetY();
-
-        // int positionT2X = (int) tank2.GetX();
-
-        // int positionT2Y = (int) tank2.GetY();
-
-        // int positionWX = (int) newWall.GetX();
-
-        // int positionWY = (int) newWall.GetY();
-
-        // int DirectionTank = (int) tank1.GetRotation();
-
-        // Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
-
-
-        // if (this.tank2 != null) {
-
-        // while ( ((positionT2X & positionT2Y) ) == (positionWX & positionWY) & keysState[Keys.A])
-        // {
-        //     this.tank2.SetRotation(0);
-               
-        // }
-
                
         }
         }
