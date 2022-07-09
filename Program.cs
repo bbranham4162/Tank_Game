@@ -97,6 +97,7 @@ namespace Tanks {
             // // Add all update actions 
             script.AddAction("update", new MoveActorsAction(1, physicsService));
             script.AddAction("update", new HandleOffscreenAction(1, W_SIZE));
+            script.AddAction("update", new HandleTankWallCollision(1, physicsService));
 
             // // Add all output actions
             script.AddAction("output", new DrawActorsAction(1, screenService));
