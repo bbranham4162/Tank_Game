@@ -51,8 +51,10 @@ namespace genie.script{
 
                 // Create the bullet and put it in the cast
                 float velocity = tank.GetRotation();
-                bulletVel.vx = velocity;
-                bulletVel.vy = velocity;
+                float xVelocity = velocity;
+                float yVelocity = -velocity;
+                bulletVel.vx = xVelocity;
+                bulletVel.vy = yVelocity;
 
                 Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                 cast.AddActor("bullets", bullet);
@@ -66,27 +68,15 @@ namespace genie.script{
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
         
             Actor? tank1 = cast.GetFirstActor("Tank1");
-
             Actor? tank2 = cast.GetFirstActor("Tank2");
-           
-            // 1. Create if statement for both keys being pressed and released
-            // 2. Create bullet when you presss the key and add it to the cast
-            // 3. Remove bulletg
 
             Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
 
             if (tank2 != null) {
-                
-                // Get the keysState from the keyboardService
-                
-                // Change the velocity to the appropriate value and let MoveActorsAction handle the
-                // actual movement
                 if (keysState[Keys.SPACE]) {
-
                     this.SpawnBullet(clock, cast, tank2);
                 }
             }
-
             else {
                 Console.WriteLine("Ya dun messed up");
             }
@@ -94,11 +84,9 @@ namespace genie.script{
             if (tank1 != null){
             
                 if (keysState[Keys.RETURN]) {
-
                     this.SpawnBullet(clock, cast, tank1);
                 }
             }
-
             else {
                 Console.WriteLine("Ya dun messed up");
             }
