@@ -51,6 +51,9 @@ namespace Tanks.script
 
         this.tank2 = cast.GetFirstActor("Tank2");
 
+
+        
+
        
 
         
@@ -65,12 +68,101 @@ namespace Tanks.script
 
                     Console.WriteLine("I hit a wall!!");
 
+                    int ChangeinX = (int) tank1.GetPreviousX() - (int) tank1.GetX();
+                    int ChangeinY = (int) tank1.GetPreviousY() - (int) tank1.GetY();
+
+                    if (physicsService.IsAbove(tank1, newWall))
+                    {
+                        tank1.SetVy(0);
+                        tank1.SetY(tank1.GetY() - (tank1.GetWidth()/ 10));
+
+                    }
+
+                    if (physicsService.IsBelow(tank1, newWall))
+                    {
+
+                        tank1.SetVy(0);
+                        tank1.SetY(tank1.GetY() + (tank1.GetWidth() / 10));
+                    }
+
+                    if (physicsService.IsLeftOf(tank1, newWall))
+                    {
+
+                        tank1.SetVx(0);
+                        tank1.SetX(tank1.GetX() - (tank1.GetWidth()/ 10));
+
+                    }
+
+                    if (physicsService.IsRightOf(tank1, newWall))
+                    {
+                        
+                        tank1.SetVx(0);
+                        tank1.SetX(tank1.GetX() + (tank1.GetWidth() / 10));
+
+                    }
+                }
+            }
+        }
+
+
+
+        if (this.tank2 != null) {
+            foreach (Actor Wall in cast.GetActors("walls")) {
+                if (this.physicsService.CheckCollision(this.tank2, Wall)) {
+
+                    Console.WriteLine("I hit a wall!!");
+
+                    
+
+                    if (physicsService.IsAbove(tank2, Wall))
+                    {
+                        tank2.SetVy(0);
+                        tank2.SetY(tank2.GetY() - (tank2.GetWidth()/ 10));
+
+                    }
+
+                    if (physicsService.IsBelow(tank2, Wall))
+                    {
+
+                        tank2.SetVy(0);
+                        tank2.SetY(tank2.GetY() + (tank2.GetWidth() / 10));
+                    }
+
+                    if (physicsService.IsLeftOf(tank2, Wall))
+                    {
+
+                        tank2.SetVx(0);
+                        tank2.SetX(tank2.GetX() - (tank2.GetWidth()/ 10));
+
+                    }
+
+                    if (physicsService.IsRightOf(tank2, Wall))
+                    {
+                        
+                        tank2.SetVx(0);
+                        tank2.SetX(tank2.GetX() + (tank2.GetWidth() / 10));
+
+                    }
+                }
+            }
+        }
+                
+
+
+
+
+
+
+                
+
+                    
+
                
         }
         }
     }
 
-        }
-    }
-}
+        
+        
+    
 // }
