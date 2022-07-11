@@ -49,10 +49,55 @@ namespace genie.script{
                 float bulletX = tank.GetX();
                 float bulletY = tank.GetY() - (tank.GetHeight()/2);
 
+                //xVelocity^2 + yVelocity^2 = velocity^2
+
                 // Create the bullet and put it in the cast
-                float velocity = tank.GetRotation();
-                float xVelocity = velocity;
-                float yVelocity = -velocity;
+                float velocity = 10;
+
+                // sets up x and y velocities for the next step
+                float xVelocity = 0;
+                float yVelocity = 0;
+
+                
+
+                //Chooses one of the four quadrants to fire the bullet into
+                if(tank.GetRotation() == 0) {
+                    xVelocity = 0;
+                    yVelocity = -velocity;
+                }
+                else if (tank.GetRotation() > 0 && tank.GetRotation() < 90) {
+                    // top right
+                    xVelocity = velocity;
+                    yVelocity = -velocity;
+                }
+                else if(tank.GetRotation() == 90) {
+                    xVelocity = velocity;
+                    yVelocity = 0;
+                }
+                else if (tank.GetRotation() > 90 && tank.GetRotation() < 180) {
+                    //bottom right
+                    xVelocity = velocity;
+                    yVelocity = velocity;
+                }
+                else if(tank.GetRotation() == 180) {
+                    xVelocity = 0;
+                    yVelocity = velocity;
+                }
+                else if (tank.GetRotation() > 180 && tank.GetRotation() < 270) {
+                    //bottom left
+                    xVelocity = -velocity;
+                    yVelocity = velocity;
+                }
+                else if(tank.GetRotation() == 270) {
+                    xVelocity = -velocity;
+                    yVelocity = 0;
+                }
+                else {
+                    //top left
+                    xVelocity = -velocity;
+                    yVelocity = -velocity;
+                }
+
                 bulletVel.vx = xVelocity;
                 bulletVel.vy = yVelocity;
 
