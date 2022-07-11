@@ -22,18 +22,50 @@ namespace genie.script{
 
         private int shootingVel;
         private List<int> keysOfInterest;
+        private DateTime lastBulletSpawn;
+        private float attackInterval;
+        private (float vx, float vy) bulletVel;
 
         public ShootingAction(int priority, RaylibKeyboardService keyboardService) : base(priority){
 
             this.keyboardService = keyboardService;
             
-            this.shootingVel = 12;
+            this.shootingVel = 10;
             // this.barrelOffset = 
             this.keysOfInterest = new List<int>();
             this.keysOfInterest.Add(Keys.SPACE);
             this.keysOfInterest.Add(Keys.RETURN);
 
+            this.lastBulletSpawn = DateTime.Now;
+            this.attackInterval = 1;
         }
+
+
+        private void SpawnBullet(Clock clock, Cast cast, Actor tank) {
+
+            TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn;
+            if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
+                // Bullet's starting position should be right on top of the ship
+                float bulletX = tank.GetX();
+                float bulletY = tank.GetY() - (tank.GetHeight()/2);
+
+                // Create the bullet and put it in the cast
+
+                int velocity = 7;
+                bulletVel.vx = velocity;
+                bulletVel.vy = velocity;
+
+                Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
+                cast.AddActor("bullets", bullet);
+
+                // Reset lastBulletSpawn to Now
+                this.lastBulletSpawn = DateTime.Now;
+            }
+        }
+
+
+
+
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
         
             Actor? tank1 = cast.GetFirstActor("Tank1");
@@ -54,67 +86,7 @@ namespace genie.script{
                 // actual movement
                 if (keysState[Keys.SPACE]) {
 
-                    Actor bullet2 = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 10, 10, tank2.GetX(), tank2.GetY(),
-                    0, //tank2.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank2.GetRotation()/180)),
-                    0, //tank2.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank2.GetRotation()/180)),
-                    tank2.GetRotation(), 0);
-
-                    //right/left shot direction based on Vx
-                /*    if(tank2.GetVx() > 0) {
-                        bullet2.SetVx(this.shootingVel);
-                    }
-                    else if(tank2.GetVx() < 0) {
-                        bullet2.SetVx(-this.shootingVel);
-                    }
-
-                    //up/down shot direction based on Vy
-                    if(tank2.GetVy() > 0) {
-                        bullet2.SetVy(this.shootingVel);
-                    }
-                    else if(tank2.GetVy() < 0) {
-                        bullet2.SetVy(-this.shootingVel);
-                    }
-
-                    //if the tank is not moving it shoots in its current orientation
-                    if(tank2.GetVx() == 0 && tank2.GetVy() == 0) {
-                        bullet2.SetVx(0);
-                        bullet2.SetVy(-this.shootingVel);
-                    }   */
-
-                    if(tank2.GetRotation() == 0) {
-                        bullet2.SetVx(0);
-                        bullet2.SetVy(-shootingVel);
-                    }
-                    else if(tank2.GetRotation() == 45) {
-                        bullet2.SetVx(shootingVel);
-                        bullet2.SetVy(-shootingVel);
-                    }
-                    else if(tank2.GetRotation() == 90) {
-                        bullet2.SetVx(shootingVel);
-                        bullet2.SetVy(0);
-                    }
-                    else if(tank2.GetRotation() == 135) {
-                        bullet2.SetVx(shootingVel);
-                        bullet2.SetVy(shootingVel);
-                    }
-                    else if(tank2.GetRotation() == 180) {
-                        bullet2.SetVx(0);
-                        bullet2.SetVy(shootingVel);
-                    }
-                    else if(tank2.GetRotation() == 225) {
-                        bullet2.SetVx(-shootingVel);
-                        bullet2.SetVy(shootingVel);
-                    }
-                    else if(tank2.GetRotation() == 270) {
-                        bullet2.SetVx(-shootingVel);
-                        bullet2.SetVy(0);
-                    }
-                    else {
-                        bullet2.SetVx(-shootingVel);
-                        bullet2.SetVy(-shootingVel);
-                    }
-
-                    cast.AddActor("bullet2", bullet2);
+                    this.SpawnBullet(clock, cast, tank2);
                 }
             }
 
@@ -125,78 +97,14 @@ namespace genie.script{
             if (tank1 != null){
             
                 if (keysState[Keys.RETURN]) {
-                    Actor bullet1 = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 10, 10,
-                    tank1.GetX(), tank1.GetY(),
-                    0, //tank1.GetVx() + (float) (shootingVel*Math.Cos(Math.PI * tank1.GetRotation()/180)),
-                    0, //tank1.GetVy() + (float) (shootingVel*Math.Sin(Math.PI * tank1.GetRotation()/180)),
-                    tank1.GetRotation(), 0);
 
-                /*    //right/left shot direction based on Vx
-                    if(tank1.GetVx() > 0) {
-                        bullet1.SetVx(this.shootingVel);
-                    }
-                    else if(tank1.GetVx() < 0) {
-                        bullet1.SetVx(-this.shootingVel);
-                    }
-
-                    //up/down shot direction based on Vy
-                    if(tank1.GetVy() > 0) {
-                        bullet1.SetVy(this.shootingVel);
-                    }
-                    else if(tank1.GetVy() < 0) {
-                        bullet1.SetVy(-this.shootingVel);
-                    }
-
-                    //if the tank is not moving it shoots in its current orientation
-                    if(tank1.GetVx() == 0 && tank1.GetVy() == 0) {
-                        bullet1.SetVx(0);
-                        bullet1.SetVy(-this.shootingVel);
-                    }*/
-
-
-                    if(tank1.GetRotation() == 0) {
-                        bullet1.SetVx(0);
-                        bullet1.SetVy(-shootingVel);
-                    }
-                    else if(tank1.GetRotation() == 45) {
-                        bullet1.SetVx(shootingVel);
-                        bullet1.SetVy(-shootingVel);
-                    }
-                    else if(tank1.GetRotation() == 90) {
-                        bullet1.SetVx(shootingVel);
-                        bullet1.SetVy(0);
-                    }
-                    else if(tank1.GetRotation() == 135) {
-                        bullet1.SetVx(shootingVel);
-                        bullet1.SetVy(shootingVel);
-                    }
-                    else if(tank1.GetRotation() == 180) {
-                        bullet1.SetVx(0);
-                        bullet1.SetVy(shootingVel);
-                    }
-                    else if(tank1.GetRotation() == 225) {
-                        bullet1.SetVx(-shootingVel);
-                        bullet1.SetVy(shootingVel);
-                    }
-                    else if(tank1.GetRotation() == 270) {
-                        bullet1.SetVx(-shootingVel);
-                        bullet1.SetVy(0);
-                    }
-                    else {
-                        bullet1.SetVx(-shootingVel);
-                        bullet1.SetVy(-shootingVel);
-                    }
-
-
-                    cast.AddActor("bullet1", bullet1);
+                    this.SpawnBullet(clock, cast, tank1);
                 }
-            
             }
 
             else {
                 Console.WriteLine("Ya dun messed up");
             }
-
         }
     }
 }
