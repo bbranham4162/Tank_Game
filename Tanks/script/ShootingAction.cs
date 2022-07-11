@@ -190,13 +190,11 @@ namespace genie.script{
 
                     cast.AddActor("bullet1", bullet1);
                 }
-            
             }
 
             else {
                 Console.WriteLine("Ya dun messed up");
             }
-
         }
     }
 }
