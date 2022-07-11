@@ -47,30 +47,32 @@ namespace Tanks.script {
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
                 if (keysState[Keys.LEFT]) {
-                    this.tank1.SetVx(-this.tankMovementVel);
-                    this.tank1.SetRotation(270);
+                    this.tank1.SetRotationVel(-5);
+                    float direction = this.tank1.GetRotation();
+                    Console.WriteLine(direction);
+                }
+                else{
+                    this.tank1.SetRotationVel(0);
                 }
                 if (keysState[Keys.RIGHT]) {
-                    this.tank1.SetVx(this.tankMovementVel);
-                    this.tank1.SetRotation(90);
+                    this.tank1.SetRotationVel(5);
+                    float direction = this.tank1.GetRotation();
+                    Console.WriteLine(direction);
+                }
+                else{
+                    this.tank1.SetRotationVel(0);
                 }
                 if (keysState[Keys.DOWN]) {
                     this.tank1.SetVy(this.tankMovementVel);
-                    this.tank1.SetRotation(180);
                 }
                 if (keysState[Keys.UP]) {
                     this.tank1.SetVy(-this.tankMovementVel);
-                    this.tank1.SetRotation(0);
-                }
-
-                // If none of the LEFT or RIGHT keys are down, x-velocity is 0
-                if (!(keysState[Keys.LEFT] || keysState[Keys.RIGHT])) {
-                    this.tank1.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
                     this.tank1.SetVy(0);
+                    this.tank1.SetVx(0);
                 }
             }
 
