@@ -44,8 +44,7 @@ namespace Tanks.script {
                 // Get the keysState from the keyboardService
                 Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
                 
-                // Change the velocity to the appropriate value and let MoveActorsAction handle the
-                // actual movement
+                // Rotates the tank (changes tank rotation)
                 if (keysState[Keys.LEFT]) {
                     this.tank1.SetRotationVel(-5);
                     float direction = this.tank1.GetRotation();
@@ -59,6 +58,16 @@ namespace Tanks.script {
                 else{
                     this.tank1.SetRotationVel(0);
                 }
+
+                // Changes rotation to 0-360. Used to simplify computations
+                if (tank1.GetRotation() == 360) {
+                    tank1.SetRotation(0);
+                }
+                if (tank1.GetRotation() == -5) {
+                    tank1.SetRotation(355);
+                }
+
+                // Moves tank forwards and backwards
                 if (keysState[Keys.DOWN]) {
                     this.tank1.SetVy(this.tankMovementVel);
                 }

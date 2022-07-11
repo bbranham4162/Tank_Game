@@ -40,7 +40,7 @@ namespace genie.script{
             this.attackInterval = 1;
         }
 
-
+        // Creates the bullet
         private void SpawnBullet(Clock clock, Cast cast, Actor tank) {
 
             TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn;
@@ -62,9 +62,7 @@ namespace genie.script{
             }
         }
 
-
-
-
+        // Checks if the user is pressing a fire button, if they are, SpawnBullet() is called
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
         
             Actor? tank1 = cast.GetFirstActor("Tank1");
