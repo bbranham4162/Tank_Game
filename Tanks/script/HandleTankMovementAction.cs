@@ -51,10 +51,7 @@ namespace Tanks.script {
                     float direction = this.tank1.GetRotation();
                     Console.WriteLine(direction);
                 }
-                else{
-                    this.tank1.SetRotationVel(0);
-                }
-                if (keysState[Keys.RIGHT]) {
+                else if (keysState[Keys.RIGHT]) {
                     this.tank1.SetRotationVel(5);
                     float direction = this.tank1.GetRotation();
                     Console.WriteLine(direction);

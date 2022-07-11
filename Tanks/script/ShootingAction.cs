@@ -50,8 +50,7 @@ namespace genie.script{
                 float bulletY = tank.GetY() - (tank.GetHeight()/2);
 
                 // Create the bullet and put it in the cast
-
-                int velocity = 7;
+                float velocity = tank.GetRotation();
                 bulletVel.vx = velocity;
                 bulletVel.vy = velocity;
 
