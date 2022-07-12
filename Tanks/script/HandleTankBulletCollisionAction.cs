@@ -29,16 +29,17 @@ namespace Tanks.script {
             // Grab the tank from the cast
             this.tank1 = cast.GetFirstActor("Tank1");
             this.tank2 = cast.GetFirstActor("Tank2");
+            
 
             // Only worry about collision if the ship actually exists
             if (this.tank2 != null) {
-                foreach (Actor bullet1 in cast.GetActors("bullet1")) {
-                    if (this.physicsService.CheckCollision(this.tank2, bullet1)) {
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if ((this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsAbove(tank2, bullet)) |(this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsLeftOf(tank2, bullet)) |(this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsRightOf(tank2, bullet)) |(this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsBelow(tank2, bullet)) ) {
                         
                         Console.WriteLine("I hit a Tank!!!!!");
 
                         cast.RemoveActor("Tank2", tank2);
-                        cast.RemoveActor("bullet1", bullet1);
+                        cast.RemoveActor("bullets", bullet);
                         // this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
                         
                     }
@@ -46,13 +47,13 @@ namespace Tanks.script {
             }
 
              if (this.tank1 != null) {
-                foreach (Actor bullet2 in cast.GetActors("bullet2")) {
-                    if (this.physicsService.CheckCollision(this.tank1, bullet2)) {
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if ((this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsAbove(tank1, bullet)) |(this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsLeftOf(tank1, bullet)) |(this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsRightOf(tank1, bullet)) |(this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsBelow(tank1, bullet))) {
                         
                         Console.WriteLine("I hit a Tank!!!!!");
 
                         cast.RemoveActor("Tank1", tank1);
-                        cast.RemoveActor("bullet2", bullet2);
+                        cast.RemoveActor("bullets", bullet);
                         // this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
                         
                     }
