@@ -55,8 +55,8 @@ namespace genie.script{
                 float velocity = 10;
 
                 // sets up x and y velocities for the next step
-                float xVelocity = 0;
-                float yVelocity = 0;
+                double xVelocity = 0;
+                double yVelocity = 0;
 
                 
 
@@ -98,8 +98,13 @@ namespace genie.script{
                     yVelocity = -velocity;
                 }
 
-                bulletVel.vx = xVelocity;
-                bulletVel.vy = yVelocity;
+                double radians = (tank.GetRotation() * Math.PI) / 180;
+                double slopeDec = Math.Tan(radians);
+                xVelocity = slopeDec * 10;
+                yVelocity = (1 - slopeDec) * 10;
+
+                bulletVel.vx = (float)xVelocity;
+                bulletVel.vy = -(float)yVelocity;
 
                 Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                 cast.AddActor("bullets", bullet);
