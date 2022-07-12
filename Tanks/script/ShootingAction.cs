@@ -47,18 +47,13 @@ namespace genie.script{
             if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
                 // Bullet's starting position should be right on top of the ship
                 float bulletX = tank.GetX();
-                float bulletY = tank.GetY() - (tank.GetHeight()/2);
+                float bulletY = tank.GetY();
 
                 // speed of the bullet
                 float velocity = 10;
 
-                // sets up x and y velocities for the next step
-                double xVelocity = 0;
-                double yVelocity = 0;
-
                 double radians = (tank.GetRotation() * Math.PI) / 180;
-                yVelocity = -(float)(velocity * Math.Cos(radians));
-                xVelocity = (float)(velocity * Math.Sin(radians));
+                this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
 
                 Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                 cast.AddActor("bullets", bullet);
