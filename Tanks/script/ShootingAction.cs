@@ -22,7 +22,8 @@ namespace genie.script{
 
         private int shootingVel;
         private List<int> keysOfInterest;
-        private DateTime lastBulletSpawn;
+        private DateTime lastBulletSpawn1;
+        private DateTime lastBulletSpawn2;
         private float attackInterval;
         private (float vx, float vy) bulletVel;
 
@@ -36,30 +37,53 @@ namespace genie.script{
             this.keysOfInterest.Add(Keys.SPACE);
             this.keysOfInterest.Add(Keys.RETURN);
 
-            this.lastBulletSpawn = DateTime.Now;
+            this.lastBulletSpawn1 = DateTime.Now;
+            this.lastBulletSpawn2 = DateTime.Now;
             this.attackInterval = 1;
         }
 
         // Creates the bullet
-        private void SpawnBullet(Clock clock, Cast cast, Actor tank) {
+        private void SpawnBullet(Clock clock, Cast cast, Actor tank, String tankNum) {
 
-            TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn;
-            if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
-                // Bullet's starting position should be right on top of the ship
-                float bulletX = tank.GetX();
-                float bulletY = tank.GetY();
+            if(tankNum == "1") {
+                TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn1;
+                if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
+                    // Bullet's starting position should be right on top of the ship
+                    float bulletX = tank.GetX();
+                    float bulletY = tank.GetY();
 
-                // speed of the bullet
-                float velocity = 10;
+                    // speed of the bullet
+                    float velocity = 10;
 
-                double radians = (tank.GetRotation() * Math.PI) / 180;
-                this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
+                    double radians = (tank.GetRotation() * Math.PI) / 180;
+                    this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
 
-                Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
-                cast.AddActor("bullets", bullet);
+                    Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
+                    cast.AddActor("bullets", bullet);
 
-                // Reset lastBulletSpawn to Now
-                this.lastBulletSpawn = DateTime.Now;
+                    // Reset lastBulletSpawn to Now
+                    this.lastBulletSpawn1 = DateTime.Now;
+                }
+            }
+            else {
+                TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn2;
+                if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
+                    // Bullet's starting position should be right on top of the ship
+                    float bulletX = tank.GetX();
+                    float bulletY = tank.GetY();
+
+                    // speed of the bullet
+                    float velocity = 10;
+
+                    double radians = (tank.GetRotation() * Math.PI) / 180;
+                    this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
+
+                    Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
+                    cast.AddActor("bullets", bullet);
+
+                    // Reset lastBulletSpawn to Now
+                    this.lastBulletSpawn2 = DateTime.Now;
+                } 
             }
         }
 
@@ -73,7 +97,7 @@ namespace genie.script{
 
             if (tank2 != null) {
                 if (keysState[Keys.SPACE]) {
-                    this.SpawnBullet(clock, cast, tank2);
+                    this.SpawnBullet(clock, cast, tank2, "2");
                 }
             }
             else {
@@ -83,7 +107,7 @@ namespace genie.script{
             if (tank1 != null){
             
                 if (keysState[Keys.RETURN]) {
-                    this.SpawnBullet(clock, cast, tank1);
+                    this.SpawnBullet(clock, cast, tank1, "1");
                 }
             }
             else {
