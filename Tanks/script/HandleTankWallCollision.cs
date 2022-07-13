@@ -68,8 +68,7 @@ namespace Tanks.script
 
                     Console.WriteLine("I hit a wall!!");
 
-                    int ChangeinX = (int) tank1.GetPreviousX() - (int) tank1.GetX();
-                    int ChangeinY = (int) tank1.GetPreviousY() - (int) tank1.GetY();
+                   
 
                     if (physicsService.IsAbove(tank1, newWall))
                     {
