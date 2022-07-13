@@ -113,7 +113,7 @@ namespace Tanks.script {
                 }
 
                 // Moves tank forwards and backwards
-                if (keysState[Keys.D]) {
+                if (keysState[Keys.S]) {
                     double radians = (tank2.GetRotation() * Math.PI) / 180;
                     this.tank2.SetVx(-(float)(tankMovementVel * Math.Sin(radians)));
                     this.tank2.SetVy((float)(tankMovementVel * Math.Cos(radians)));
@@ -125,7 +125,7 @@ namespace Tanks.script {
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
-                if (!(keysState[Keys.W] || keysState[Keys.D])) {
+                if (!(keysState[Keys.W] || keysState[Keys.S])) {
                     this.tank2.SetVy(0);
                     this.tank2.SetVx(0);
                 }
