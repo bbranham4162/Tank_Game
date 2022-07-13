@@ -16,7 +16,6 @@ namespace Tanks.script
 
         private genie.cast.Actor? tank2;
 
-        
         // private List<int> keysOfInterest;
         // private int tankMovementVel;
 
@@ -37,10 +36,6 @@ namespace Tanks.script
             // this.keysOfInterest.Add(Keys.A);
             // this.keysOfInterest.Add(Keys.S);
             // this.keysOfInterest.Add(Keys.D);
-            
-
-
-
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback)
@@ -144,24 +139,7 @@ namespace Tanks.script
                     }
                 }
             }
-        }
-                
-
-
-
-
-
-
-                
-
-                    
-
-               
-        }
+        }       
         }
     }
-
-        
-        
-    
-// }
+}
