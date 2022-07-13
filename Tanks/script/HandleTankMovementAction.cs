@@ -67,10 +67,14 @@ namespace Tanks.script {
 
                 // Moves tank forwards and backwards
                 if (keysState[Keys.DOWN]) {
-                    this.tank1.SetVy(this.tankMovementVel);
+                    double radians = (tank1.GetRotation() * Math.PI) / 180;
+                    this.tank1.SetVx(-(float)(tankMovementVel * Math.Sin(radians)));
+                    this.tank1.SetVy((float)(tankMovementVel * Math.Cos(radians)));
                 }
                 if (keysState[Keys.UP]) {
-                    this.tank1.SetVy(-this.tankMovementVel);
+                    double radians = (tank1.GetRotation() * Math.PI) / 180;
+                    this.tank1.SetVy(-(float)(tankMovementVel * Math.Cos(radians)));
+                    this.tank1.SetVx((float)(tankMovementVel * Math.Sin(radians)));
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
@@ -87,31 +91,43 @@ namespace Tanks.script {
                 
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
+                // Rotates the tank (changes tank rotation)
                 if (keysState[Keys.A]) {
-                    this.tank2.SetVx(-this.tankMovementVel);
-                    this.tank2.SetRotation(270);
+                    this.tank2.SetRotationVel(-5);
+                    float direction = this.tank2.GetRotation();
                 }
-                if (keysState[Keys.D]) {
-                    this.tank2.SetVx(this.tankMovementVel);
-                    this.tank2.SetRotation(90);
+                else if (keysState[Keys.D]) {
+                    this.tank2.SetRotationVel(5);
+                    float direction = this.tank2.GetRotation();
                 }
-                if (keysState[Keys.S]) {
-                    this.tank2.SetVy(this.tankMovementVel);
-                    this.tank2.SetRotation(180);
-                }
-                if (keysState[Keys.W]) {
-                    this.tank2.SetVy(-this.tankMovementVel);
-                    this.tank2.SetRotation(0);
+                else{
+                    this.tank2.SetRotationVel(0);
                 }
 
-                // If none of the LEFT or RIGHT keys are down, x-velocity is 0
-                if (!(keysState[Keys.A] || keysState[Keys.D])) {
-                    this.tank2.SetVx(0);
+                // Changes rotation to 0-360. Used to simplify computations
+                if (tank2.GetRotation() == 360) {
+                    tank2.SetRotation(0);
+                }
+                if (tank2.GetRotation() == -5) {
+                    tank2.SetRotation(355);
+                }
+
+                // Moves tank forwards and backwards
+                if (keysState[Keys.D]) {
+                    double radians = (tank2.GetRotation() * Math.PI) / 180;
+                    this.tank2.SetVx(-(float)(tankMovementVel * Math.Sin(radians)));
+                    this.tank2.SetVy((float)(tankMovementVel * Math.Cos(radians)));
+                }
+                if (keysState[Keys.W]) {
+                    double radians = (tank2.GetRotation() * Math.PI) / 180;
+                    this.tank2.SetVy(-(float)(tankMovementVel * Math.Cos(radians)));
+                    this.tank2.SetVx((float)(tankMovementVel * Math.Sin(radians)));
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
-                if (!(keysState[Keys.W] || keysState[Keys.S])) {
+                if (!(keysState[Keys.W] || keysState[Keys.D])) {
                     this.tank2.SetVy(0);
+                    this.tank2.SetVx(0);
                 }
             }
         }
