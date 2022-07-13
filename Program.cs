@@ -90,7 +90,7 @@ namespace Tanks {
             // startGameActions["update"].Add(new SpawnAsteroidsAction(1, W_SIZE, (float)1.5));
 
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions));
-            script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level1.json"));
+            script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level2.json"));
             
 
 
