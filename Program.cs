@@ -36,7 +36,7 @@ namespace Tanks {
             int TANK_WIDTH = 40;
             int TANK_LENGTH = 50;
             string SCREEN_TITLE = "Tanks";
-            int FPS = 120;
+            int FPS = 60;
             //All the services initiated
 
             RaylibKeyboardService keyboardService = new RaylibKeyboardService();
@@ -102,6 +102,7 @@ namespace Tanks {
             script.AddAction("update", new HandleTankWallCollision(1, physicsService));
              
             script.AddAction("update", new HandleTankBulletCollisionAction(1, physicsService));
+            script.AddAction("update", new CleanUpExplosionAction(1));
             script.AddAction("update", new HandleBulletWallCollision(1, physicsService));
            
             // // Add all output actions
