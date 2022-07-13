@@ -32,8 +32,6 @@ namespace Tanks.script
         private int wallsHeight = 300;
 
         private string wallPath;
-
-
     
 
         public SpawnWalls(int priority, string wallPath) : base(priority){
@@ -49,9 +47,6 @@ namespace Tanks.script
         {
             // Number of wall addresses
             int wallAddressNumber = 0;
-            
-            
-            
                 
             List<Wall> walls = new List<Wall>();
 

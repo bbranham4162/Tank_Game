@@ -15,13 +15,15 @@ class HandleStartGameAction : genie.script.Action {
     private RaylibMouseService mouseService;
     private RaylibPhysicsService physicsService;
     private Dictionary<string, List<genie.script.Action>> actions;
+    private RaylibAudioService audioService;
 
-    public HandleStartGameAction(int priority, RaylibMouseService mouseService, RaylibPhysicsService physicsService, Dictionary<string, List<genie.script.Action>> actions) :
+    public HandleStartGameAction(int priority, RaylibMouseService mouseService, RaylibPhysicsService physicsService, Dictionary<string, List<genie.script.Action>> actions, RaylibAudioService audioService) :
     base(priority)
     {
         this.mouseService = mouseService;
         this.physicsService = physicsService;
         this.actions = actions;
+        this.audioService = audioService;
     }
 
     public override void execute(Cast cast, Script script, Clock clock, Callback callback)
@@ -49,6 +51,8 @@ class HandleStartGameAction : genie.script.Action {
                 cast.RemoveActor("start_button", startGameButton);
                 script.RemoveAction("input", this);
                 
+                this.audioService.PlaySound("Tanks/assets/Sound/mixkit-truck-start-engine-1623.wav", 5);
+
                 // Add input actions
                 foreach (genie.script.Action action in this.actions["input"]) {
                     script.AddAction("input", action);

@@ -42,7 +42,7 @@ namespace Tanks {
             RaylibKeyboardService keyboardService = new RaylibKeyboardService();
             RaylibPhysicsService physicsService = new RaylibPhysicsService();
             RaylibScreenService screenService = new RaylibScreenService(W_SIZE, SCREEN_TITLE, FPS);
-            RaylibAudioService audioservice = new RaylibAudioService();
+            RaylibAudioService audioService = new RaylibAudioService();
             RaylibMouseService mouseService = new RaylibMouseService();
 
             // Creates Director
@@ -91,6 +91,8 @@ namespace Tanks {
 
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions));
             script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level2.json"));
+            script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions, audioService));
+            script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level1.json"));
             
 
 
