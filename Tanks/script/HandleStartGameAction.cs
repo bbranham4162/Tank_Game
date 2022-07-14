@@ -43,32 +43,28 @@ class HandleStartGameAction : genie.script.Action {
             && this.mouseService.IsButtonDown(Mouse.LEFT)
             && this.physicsService.CheckCollisionPoint(startGameButton, (mousePosition.X, mousePosition.Y))) {
                 
-                // Remove the startGame Button
-                
-
-                // cast.AddActor("walls", leftwall );
-                
-                cast.RemoveActor("start_button", startGameButton);
-                script.RemoveAction("input", this);
-                
-                this.audioService.PlaySound("Tanks/assets/Sound/mixkit-truck-start-engine-1623.wav", 5);
-
-                // Add input actions
-                foreach (genie.script.Action action in this.actions["input"]) {
-                    script.AddAction("input", action);
-                }
-                
-                // Add update actions
-                foreach (genie.script.Action action in this.actions["update"])
-                {
-                    script.AddAction("update", action);
-                }
-
-                // Add output actions
-                foreach (genie.script.Action action in this.actions["output"])
-                {
-                    script.AddAction("output", action);
-                }
+            // Remove the startGame Button
+            // cast.AddActor("walls", leftwall );
+            
+            cast.RemoveActor("start_button", startGameButton);
+            script.RemoveAction("input", this);
+            
+            this.audioService.PlaySound("Tanks/assets/Sound/mixkit-truck-start-engine-1623.wav", 5);
+            // Add input actions
+            foreach (genie.script.Action action in this.actions["input"]) {
+                script.AddAction("input", action);
+            }
+            
+            // Add update actions
+            foreach (genie.script.Action action in this.actions["update"])
+            {
+                script.AddAction("update", action);
+            }
+            // Add output actions
+            foreach (genie.script.Action action in this.actions["output"])
+            {
+                script.AddAction("output", action);
+            }
         }
 
     }
