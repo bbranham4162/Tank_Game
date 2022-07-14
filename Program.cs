@@ -36,7 +36,7 @@ namespace Tanks {
             int TANK_WIDTH = 40;
             int TANK_LENGTH = 50;
             string SCREEN_TITLE = "Tanks";
-            int FPS = 120;
+            int FPS = 60;
             //All the services initiated
 
             RaylibKeyboardService keyboardService = new RaylibKeyboardService();
@@ -90,6 +90,8 @@ namespace Tanks {
             // startGameActions["update"].Add(new SpawnAsteroidsAction(1, W_SIZE, (float)1.5));
 
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions, audioService));
+            script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level2.json"));
+            script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions, audioService));
             script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level1.json"));
             
 
@@ -100,6 +102,7 @@ namespace Tanks {
             script.AddAction("update", new HandleTankWallCollision(1, physicsService));
              
             script.AddAction("update", new HandleTankBulletCollisionAction(1, physicsService));
+            script.AddAction("update", new CleanUpExplosionAction(1));
             script.AddAction("update", new HandleBulletWallCollision(1, physicsService));
            
             // // Add all output actions
