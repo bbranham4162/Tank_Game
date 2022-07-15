@@ -31,7 +31,7 @@ namespace genie.script{
 
             this.keyboardService = keyboardService;
             
-            this.shootingVel = 10;
+            this.shootingVel = 6;
             // this.barrelOffset = 
             this.keysOfInterest = new List<int>();
             this.keysOfInterest.Add(Keys.SPACE);
@@ -52,11 +52,8 @@ namespace genie.script{
                     float bulletX = tank.GetX();
                     float bulletY = tank.GetY();
 
-                    // speed of the bullet
-                    float velocity = 10;
-
                     double radians = (tank.GetRotation() * Math.PI) / 180;
-                    this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
+                    this.bulletVel = (((float)(this.shootingVel * Math.Sin(radians))) , (-(float)(this.shootingVel * Math.Cos(radians))));
 
                     Bullet bullet = new Bullet("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                     cast.AddActor("bullets", bullet);
@@ -72,11 +69,8 @@ namespace genie.script{
                     float bulletX = tank.GetX();
                     float bulletY = tank.GetY();
 
-                    // speed of the bullet
-                    float velocity = 10;
-
                     double radians = (tank.GetRotation() * Math.PI) / 180;
-                    this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
+                    this.bulletVel = (((float)(this.shootingVel * Math.Sin(radians))) , (-(float)(this.shootingVel * Math.Cos(radians))));
 
                     Bullet bullet = new Bullet("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                     cast.AddActor("bullets", bullet);
