@@ -27,9 +27,9 @@ namespace Tanks.script
                 {
                     if (this.physicsService.CheckCollision(Bullet, Wall))
                     {
-                        cast.RemoveActor("bullets", Bullet);
+                        //cast.RemoveActor("bullets", Bullet);
                         // increase bullet bounce count by 1
-                        Bullet.SetBounces(Bullet.GetBounces + 1);
+                        //Bullet.SetBounces(Bullet.GetBounces + 1);
 
                         if (physicsService.IsAbove(Wall, Bullet ) || physicsService.IsBelow(Wall, Bullet))
                         {
@@ -41,10 +41,10 @@ namespace Tanks.script
                         }
 
                         // if bullet bounces >= 4, delete the bullet
-                        if (Bullet.GetBounces >= 4)
-                        {
-                            cast.RemoveActor("bullets", Bullet);
-                        }
+                        //if (Bullet.GetBounces >= 4)
+                        //{
+                        //    cast.RemoveActor("bullets", Bullet);
+                        //}
 
                     }
                 }
