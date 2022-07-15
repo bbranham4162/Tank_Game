@@ -32,9 +32,9 @@ namespace Tanks {
         public static void Main(string[] args) {   
             // Some constants W_SIZE and, Screen_title and FPS are for our screen
             (int, int) W_SIZE = (1000, 800);
-            (int, int) START_POSITION = (500, 700);
-            int TANK_WIDTH = 40;
-            int TANK_LENGTH = 50;
+            //(int, int) START_POSITION = (500, 700);
+            //int TANK_WIDTH = 40;
+            //int TANK_LENGTH = 50;
             string SCREEN_TITLE = "Tanks";
             int FPS = 120;
             //All the services initiated

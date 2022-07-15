@@ -47,8 +47,8 @@ namespace Tanks.script
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback)
         {
-            // Number of wall addresses
-            int wallAddressNumber = 0;
+            // Number of wall addresses, not currently used
+            //int wallAddressNumber = 0;
             
             
             

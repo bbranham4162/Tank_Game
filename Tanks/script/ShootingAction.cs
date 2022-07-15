@@ -100,18 +100,12 @@ namespace genie.script{
                     this.SpawnBullet(clock, cast, tank2, "2");
                 }
             }
-            else {
-                Console.WriteLine("Ya dun messed up");
-            }
 
             if (tank1 != null){
             
                 if (keysState[Keys.RETURN]) {
                     this.SpawnBullet(clock, cast, tank1, "1");
                 }
-            }
-            else {
-                Console.WriteLine("Ya dun messed up");
             }
         }
     }
