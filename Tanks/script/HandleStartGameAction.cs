@@ -49,7 +49,7 @@ class HandleStartGameAction : genie.script.Action {
             cast.RemoveActor("start_button", startGameButton);
             script.RemoveAction("input", this);
             
-            this.audioService.PlaySound("Tanks/assets/Sound/mixkit-truck-start-engine-1623.wav", 5);
+            this.audioService.PlaySound("Tanks/assets/Sound/mixkit-truck-start-engine-1623.wav", 1);
             // Add input actions
             foreach (genie.script.Action action in this.actions["input"]) {
                 script.AddAction("input", action);
