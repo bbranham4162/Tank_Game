@@ -65,6 +65,9 @@ namespace genie.script{
             else {
                 TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn2;
                 if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
+
+                    
+
                     // Bullet's starting position should be right on top of the ship
                     float bulletX = tank.GetX();
                     float bulletY = tank.GetY();
