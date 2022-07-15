@@ -58,7 +58,7 @@ namespace genie.script{
                     double radians = (tank.GetRotation() * Math.PI) / 180;
                     this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
 
-                    Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
+                    Bullet bullet = new Bullet("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                     cast.AddActor("bullets", bullet);
 
                     // Reset lastBulletSpawn to Now
@@ -78,7 +78,7 @@ namespace genie.script{
                     double radians = (tank.GetRotation() * Math.PI) / 180;
                     this.bulletVel = (((float)(velocity * Math.Sin(radians))) , (-(float)(velocity * Math.Cos(radians))));
 
-                    Actor bullet = new Actor("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
+                    Bullet bullet = new Bullet("Tanks/assets/Cannonball/cannon ball_1.png", 20, 20, bulletX, bulletY, bulletVel.vx, bulletVel.vy);
                     cast.AddActor("bullets", bullet);
 
                     // Reset lastBulletSpawn to Now
