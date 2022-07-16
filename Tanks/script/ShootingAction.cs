@@ -7,11 +7,6 @@ using genie.services.raylib;
 
 
 namespace genie.script{
-
-
-    
-
-
     class ShootingAction : genie.script.Action{
 
         private RaylibKeyboardService keyboardService;
@@ -72,8 +67,6 @@ namespace genie.script{
                 TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn2;
                 if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
 
-                    
-
                     // Bullet's starting position should be right on top of the ship
                     float bulletX = tank.GetX();
                     float bulletY = tank.GetY();
@@ -108,8 +101,7 @@ namespace genie.script{
             if (tank1 != null){
             
                 if (keysState[Keys.RETURN]) {
-                    this.SpawnBullet(clock, cast, tank1, "1");
-                    
+                    this.SpawnBullet(clock, cast, tank1, "1");                  
                 }
             }
         }

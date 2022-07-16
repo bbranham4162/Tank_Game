@@ -10,12 +10,8 @@ namespace Tanks.script {
     class CleanUpExplosionAction : genie.script.Action {
         
         // Member Variables
-       
-
-
         // Constructor
         public CleanUpExplosionAction(int priority) : base(priority) {
-            
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
@@ -27,8 +23,6 @@ namespace Tanks.script {
                 if (!explode1.IsAnimating())
                 {
                     cast.RemoveActor("explode1", explode1);
-
-
                 }
             }
 
@@ -36,13 +30,8 @@ namespace Tanks.script {
                 if (!explode2.IsAnimating())
                 {
                     cast.RemoveActor("explode2", explode2);
-
-
                 }
             }
-
         }
-
-
     }
 }

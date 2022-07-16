@@ -51,12 +51,6 @@ namespace Tanks.script {
 
             // Have a for loop that iterates each item in that list 
 
-           
-
-            
-
-            
-            
             // Only worry about collision if the ship actually exists
             if (this.tank2 != null) {
                 foreach (Actor bullet in cast.GetActors("bullets")) {
@@ -101,20 +95,6 @@ namespace Tanks.script {
                     }
                 }
              }
-
-            
-
-            // if (this.tank != null) {
-            //     foreach (Actor bullet in cast.GetActors("bullet2")) {
-            //         if (this.physicsService.CheckCollision(this.tank, bullet)) {
-            //             cast.RemoveActor("tank1", this.tank);
-            //             cast.RemoveActor("bullet2", bullet);
-            //             this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
-            //             this.tank = null;
-            //             break;
-                    }
-                }
-            }
-//         }
-//     }
-// }
+        }
+    }
+}
