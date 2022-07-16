@@ -51,10 +51,6 @@ namespace Tanks.script
                 foreach (Actor newWall in cast.GetActors("walls")) {
                     if (this.physicsService.CheckCollision(this.tank1, newWall)) {
 
-                        Console.WriteLine("I hit a wall!!");
-
-
-
                         if (physicsService.IsAbove(tank1, newWall))
                         {
                             tank1.SetVy(0);
@@ -93,10 +89,6 @@ namespace Tanks.script
             if (this.tank2 != null) {
                 foreach (Actor Wall in cast.GetActors("walls")) {
                     if (this.physicsService.CheckCollision(this.tank2, Wall)) {
-                    
-                        Console.WriteLine("I hit a wall!!");
-    
-                        
     
                         if (physicsService.IsAbove(tank2, Wall))
                         {

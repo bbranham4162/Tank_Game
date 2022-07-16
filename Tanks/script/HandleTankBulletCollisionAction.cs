@@ -23,10 +23,11 @@ namespace Tanks.script {
         // Constructor
         public HandleTankBulletCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService ) : base(priority) {
             this.tank1 = null;
+            this.tank2 = null;
             this.physicsService = physicsService;
             this.audioService = audioService;
             
-            this.tank2 = null; 
+             
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
@@ -43,7 +44,6 @@ namespace Tanks.script {
 
             for (int i = 0; i <2; i++)
             {
-
             
             pictures.Add($"Tanks/assets/Animations/test{i}.png");
            
@@ -56,8 +56,6 @@ namespace Tanks.script {
                 foreach (Actor bullet in cast.GetActors("bullets")) {
                     if ((this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsAbove(tank2, bullet)) |(this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsLeftOf(tank2, bullet)) |(this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsRightOf(tank2, bullet)) |(this.physicsService.CheckCollision(this.tank2, bullet) & physicsService.IsBelow(tank2, bullet)) ) {
                         
-                        Console.WriteLine("I hit a Tank!!!!!");
-
                         cast.RemoveActor("Tank2", tank2);
                         cast.RemoveActor("bullets", bullet);
 
@@ -68,6 +66,11 @@ namespace Tanks.script {
                         
                         this.audioService.PlaySound("Tanks/assets/Sound/Victory.mp3", 1);
                         
+                        tank2.SetX(100);
+                        tank2.SetY(100);
+                        tank2.SetRotation(180);
+                        cast.AddActor("Tank2", tank2);
+                        
                     }
                 }
             }
@@ -75,8 +78,6 @@ namespace Tanks.script {
              if (this.tank1 != null) {
                 foreach (Actor bullet in cast.GetActors("bullets")) {
                     if ((this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsAbove(tank1, bullet)) |(this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsLeftOf(tank1, bullet)) |(this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsRightOf(tank1, bullet)) |(this.physicsService.CheckCollision(this.tank1, bullet) & physicsService.IsBelow(tank1, bullet))) {
-                        
-                        Console.WriteLine("I hit a Tank!!!!!");
 
                         cast.RemoveActor("Tank1", tank1);
                         cast.RemoveActor("bullets", bullet);
@@ -87,10 +88,15 @@ namespace Tanks.script {
                         
                         cast.AddActor("explode1",animatedExplosionT1);
 
-                        this.audioService.PlaySound("Tanks/assets/Sound/Victory.mp3", (float) 1);
+                        this.audioService.PlaySound("Tanks/assets/Sound/Victory.mp3", 1);
+
+                        tank1.SetX(900);
+                        tank1.SetY(700);
+                        tank1.SetRotation(0);
+                        cast.AddActor("Tank1", tank1);
                     }
                 }
-             }
+            }
         }
     }
 }
