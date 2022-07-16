@@ -27,9 +27,13 @@ namespace genie.script{
         private float attackInterval;
         private (float vx, float vy) bulletVel;
 
-        public ShootingAction(int priority, RaylibKeyboardService keyboardService) : base(priority){
+        private RaylibAudioService audioService;
+
+        public ShootingAction(int priority, RaylibKeyboardService keyboardService, RaylibAudioService audioService) : base(priority){
 
             this.keyboardService = keyboardService;
+
+            this.audioService = audioService;
             
             this.shootingVel = 6;
             // this.barrelOffset = 
@@ -95,6 +99,7 @@ namespace genie.script{
             if (tank2 != null) {
                 if (keysState[Keys.SPACE]) {
                     this.SpawnBullet(clock, cast, tank2, "2");
+                    this.audioService.PlaySound("Tanks/assets/Sound/mixkit-explosive-impact-from-afar-2758.wav", 1);
                 }
             }
 
@@ -102,6 +107,7 @@ namespace genie.script{
             
                 if (keysState[Keys.RETURN]) {
                     this.SpawnBullet(clock, cast, tank1, "1");
+                    this.audioService.PlaySound("Tanks/assets/Sound/mixkit-explosive-impact-from-afar-2758.wav", 1);
                 }
             }
         }

@@ -86,7 +86,7 @@ namespace Tanks {
             startGameActions["output"] = new List<genie.script.Action>();
 
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
-            startGameActions["input"].Add(new ShootingAction(2, keyboardService));
+            startGameActions["input"].Add(new ShootingAction(2, keyboardService, audioService));
             // startGameActions["update"].Add(new SpawnAsteroidsAction(1, W_SIZE, (float)1.5));
 
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions, audioService));
