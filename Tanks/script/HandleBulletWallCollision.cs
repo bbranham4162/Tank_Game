@@ -13,10 +13,12 @@ namespace Tanks.script
     class HandleBulletWallCollision : genie.script.Action 
     {
         private RaylibPhysicsService physicsService;
+        private RaylibAudioService audioService;
 
-        public HandleBulletWallCollision(int priority, RaylibPhysicsService physicsService) : base(priority)
+        public HandleBulletWallCollision(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority)
         {
             this.physicsService = physicsService;
+            this.audioService = audioService;
         }  
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback)
@@ -45,6 +47,24 @@ namespace Tanks.script
                             cast.RemoveActor("bullets", Bullet);
                         }
 
+                        Random rnd = new Random();
+                        int random = rnd.Next(1,6);
+
+                        if(random == 1) {
+                            this.audioService.PlaySound("Tanks/assets/Sound/sfx-pop.wav", 1);
+                        }
+                        else if(random == 2) {
+                            this.audioService.PlaySound("Tanks/assets/Sound/sfx-pop3.wav", 1);
+                        }
+                        else if(random == 3) {
+                            this.audioService.PlaySound("Tanks/assets/Sound/sfx-pop4.wav", 1);
+                        }
+                        else if(random == 4) {
+                            this.audioService.PlaySound("Tanks/assets/Sound/sfx-pop5.wav", 1);
+                        }
+                        else {
+                            this.audioService.PlaySound("Tanks/assets/Sound/sfx-pop6.wav", 1);
+                        }
                     }
                 }
             }

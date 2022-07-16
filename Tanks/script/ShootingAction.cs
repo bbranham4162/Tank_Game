@@ -59,6 +59,7 @@ namespace genie.script{
 
                     // Reset lastBulletSpawn to Now
                     this.lastBulletSpawn1 = DateTime.Now;
+
                     this.audioService.PlaySound("Tanks/assets/Sound/mixkit-hard-pop-click-2364.wav", 1);
                 }
             }
