@@ -86,7 +86,7 @@ namespace Tanks {
             startGameActions["output"] = new List<genie.script.Action>();
 
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
-            startGameActions["input"].Add(new ShootingAction(2, keyboardService));
+            startGameActions["input"].Add(new ShootingAction(2, keyboardService, audioService));
             // startGameActions["update"].Add(new SpawnAsteroidsAction(1, W_SIZE, (float)1.5));
 
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions, audioService));
@@ -99,7 +99,7 @@ namespace Tanks {
             script.AddAction("update", new HandleOffscreenAction(1, W_SIZE));
             script.AddAction("update", new HandleTankWallCollision(1, physicsService));
              
-            script.AddAction("update", new HandleTankBulletCollisionAction(1, physicsService));
+            script.AddAction("update", new HandleTankBulletCollisionAction(1, physicsService, audioService));
             script.AddAction("update", new CleanUpExplosionAction(1));
             script.AddAction("update", new HandleBulletWallCollision(1, physicsService));
            
