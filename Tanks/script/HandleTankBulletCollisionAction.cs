@@ -66,8 +66,6 @@ namespace Tanks.script {
                         animatedExplosionT2.SetAnimating(true);
                         cast.AddActor("explode2", animatedExplosionT2);
                         
-                        
-                        
                         this.audioService.PlaySound("Tanks/assets/Sound/Victory.mp3", 1);
                         
                     }
@@ -83,15 +81,13 @@ namespace Tanks.script {
                         cast.RemoveActor("Tank1", tank1);
                         cast.RemoveActor("bullets", bullet);
 
-                        
-
                         AnimatedActor animatedExplosionT1 = new AnimatedActor(pictures, tank1.GetWidth(), tank1.GetHeight(), 5, 60, true, tank1.GetX(), tank1.GetY(), 0, 0, 0, 0, false );
                         
                         animatedExplosionT1.SetAnimating(true);
                         
                         cast.AddActor("explode1",animatedExplosionT1);
-                        // this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
-                        
+
+                        this.audioService.PlaySound("Tanks/assets/Sound/Victory.mp3", (float) 1);
                     }
                 }
              }
