@@ -101,7 +101,7 @@ namespace Tanks {
             script.AddAction("update", new HandleOffscreenAction(1, W_SIZE));
             script.AddAction("update", new HandleTankWallCollision(1, physicsService));
              
-            script.AddAction("update", new HandleTankBulletCollisionAction(1, physicsService));
+            script.AddAction("update", new HandleTankBulletCollisionAction(1, physicsService, audioService));
             script.AddAction("update", new CleanUpExplosionAction(1));
             script.AddAction("update", new HandleBulletWallCollision(1, physicsService));
            

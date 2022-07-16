@@ -8,6 +8,7 @@ using Tanks.cast;
 
 namespace Tanks.script {
     class HandleTankBulletCollisionAction : genie.script.Action {
+
         
         // Member Variables
         RaylibPhysicsService physicsService;
@@ -16,11 +17,14 @@ namespace Tanks.script {
 
         private genie.cast.Actor? tank2;
 
+        private RaylibAudioService audioService;
+
 
         // Constructor
-        public HandleTankBulletCollisionAction(int priority, RaylibPhysicsService physicsService) : base(priority) {
+        public HandleTankBulletCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService ) : base(priority) {
             this.tank1 = null;
             this.physicsService = physicsService;
+            this.audioService = audioService;
             
             this.tank2 = null; 
         }
@@ -70,7 +74,7 @@ namespace Tanks.script {
                         
                         
                         
-                        // this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
+                        this.audioService.PlaySound("Tanks/assets/Sound/Victory.mp3", 1);
                         
                     }
                 }
