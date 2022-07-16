@@ -99,7 +99,6 @@ namespace genie.script{
             }
 
             if (tank1 != null){
-            
                 if (keysState[Keys.RETURN]) {
                     this.SpawnBullet(clock, cast, tank1, "1");                  
                 }
