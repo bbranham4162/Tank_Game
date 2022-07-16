@@ -20,22 +20,6 @@ namespace Tanks.script {
             // First, fill the screen with white every frame, get ready to draw more stuff
             this.screenService.FillScreen(Color.WHITE);
 
-            // Actor tank1 = cast.GetFirstActor("Tank1");
-
-
-
-            // Draw all actors as rectangles for now.
-            // foreach (Actor actor in cast.GetAllActors()) {
-
-                
-                
-            //     Color actorColor = actor == tank1 ? Color.GREEN : Color.BLUE; 
-                
-                
-            //     // Color actorColor = actor is Tank tank1 ? Color.GREEN : Color.BLACK;
-            //     // this.screenService.DrawRectangle(actor.GetPosition(), actor.GetWidth(), actor.GetHeight(), actorColor, 5);
-            // }
-            
             this.screenService.DrawActors(cast.GetAllActors());
         }
     }

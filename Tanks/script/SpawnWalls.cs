@@ -11,7 +11,6 @@ using System.Text.Json.Serialization;
 namespace Tanks.script
 {
 
-
     class SpawnWalls : genie.script.Action
     {
         private class Wall
@@ -39,9 +38,7 @@ namespace Tanks.script
             this.wallNumber = 4;
             this.wallXPosition = 100;
             this.wallPath = wallPath;
-
         }
-
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback)
         {
@@ -66,12 +63,10 @@ namespace Tanks.script
                 cast.AddActor("walls", newWall);
             }
 
-
             // The action removes itself from the script
             // (comment the following out if you want this code to run)
             script.RemoveAction("input", this);
 
-        
         }
     }   
 }
