@@ -67,6 +67,7 @@ namespace genie.script{
                     this.audioService.PlaySound("Tanks/assets/Sound/mixkit-hard-pop-click-2364.wav", 1);
                 }
             }
+            //empty comment <3
             else {
                 TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn2;
                 if (timeSinceLastShot.TotalSeconds >= this.attackInterval) {
