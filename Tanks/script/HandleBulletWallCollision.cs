@@ -40,7 +40,7 @@ namespace Tanks.script
                         }
 
                         // if bullet bounces >= 4, delete the bullet
-                        if (Bullet.GetBounces() >= 4)
+                        if (Bullet.GetBounces() >= 6)
                         {
                             cast.RemoveActor("bullets", Bullet);
                         }

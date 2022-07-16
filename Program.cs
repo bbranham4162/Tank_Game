@@ -93,8 +93,6 @@ namespace Tanks {
             script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level2.json"));
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions, audioService));
             script.AddAction("input", new SpawnWalls(1, "Tanks/assets/Levels/level1.json"));
-            
-
 
             // // Add all update actions 
             script.AddAction("update", new MoveActorsAction(1, physicsService));
