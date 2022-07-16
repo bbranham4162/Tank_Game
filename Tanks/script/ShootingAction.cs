@@ -64,7 +64,7 @@ namespace genie.script{
 
                     // Reset lastBulletSpawn to Now
                     this.lastBulletSpawn1 = DateTime.Now;
-                    this.audioService.PlaySound("Tanks/assets/Sound/mixkit-explosive-impact-from-afar-2758.wav", 1);
+                    this.audioService.PlaySound("Tanks/assets/Sound/mixkit-hard-pop-click-2364.wav", 1);
                 }
             }
             else {
@@ -85,7 +85,7 @@ namespace genie.script{
 
                     // Reset lastBulletSpawn to Now
                     this.lastBulletSpawn2 = DateTime.Now;
-                    this.audioService.PlaySound("Tanks/assets/Sound/mixkit-explosive-impact-from-afar-2758.wav", 1);
+                    this.audioService.PlaySound("Tanks/assets/Sound/mixkit-hard-pop-click-2364.wav", 1);
                 } 
             }
         }
